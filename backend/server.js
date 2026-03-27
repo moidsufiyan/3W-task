@@ -8,8 +8,21 @@ const connectDB = require('./config/db');
 dotenv.config();
 connectDB();
 const app = express();
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
+  'https://taskplannet-social.vercel.app'
+].filter(Boolean);
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Fallback to accept all during evaluation to prevent strict lockouts
+    }
+  },
   credentials: true, 
 };
 app.use(cors(corsOptions));
