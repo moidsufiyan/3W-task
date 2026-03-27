@@ -6,8 +6,8 @@ import CommentSection from './CommentSection';
 const PostCard = ({ post, onUpdate }) => {
   const [expanded, setExpanded] = useState(false);
   const apiUrl = import.meta.env.VITE_API_BASE_URL 
-    ? import.meta.env.VITE_API_BASE_URL.replace('/api', '') 
-    : 'http://localhost:5000';
+    ? import.meta.env.VITE_API_BASE_URL.replace(/\/api\/?$/, '') 
+    : 'https://taskplanet-social-lja3.onrender.com';
   const imageUrl = post.imageUrl ? `${apiUrl}${post.imageUrl}` : null;
   const dateStr = new Date(post.createdAt).toLocaleDateString(undefined, {
     month: 'short', day: 'numeric', year: 'numeric'

@@ -1,5 +1,5 @@
 import axios from 'axios';
-let rawBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+let rawBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://taskplanet-social-lja3.onrender.com/api';
 if (rawBaseUrl && !rawBaseUrl.endsWith('/api')) {
   rawBaseUrl += '/api';
 }
